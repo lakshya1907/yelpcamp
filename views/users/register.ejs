@@ -1,0 +1,29 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="yc-auth-wrap">
+  <div class="yc-auth-card">
+    <img class="yc-auth-img" src="https://images.unsplash.com/photo-1471115853179-bb1d604434e0?w=800&q=80" alt="campsite">
+    <div class="yc-auth-body">
+      <h2>Create account</h2>
+      <p class="subtitle">Join the YelpCamp community</p>
+      <form action="/register" method="POST" class="validated-form" novalidate>
+        <div class="yc-form-group">
+          <label class="yc-label" for="username">Username</label>
+          <input class="yc-input" type="text" id="username" name="username" required autofocus>
+        </div>
+        <div class="yc-form-group">
+          <label class="yc-label" for="email">Email</label>
+          <input class="yc-input" type="email" id="email" name="email" required>
+        </div>
+        <div class="yc-form-group">
+          <label class="yc-label" for="password">Password</label>
+          <input class="yc-input" type="password" id="password" name="password" required>
+        </div>
+        <button class="btn-forest" type="submit" style="width:100%;justify-content:center;">Create Account</button>
+      </form>
+      <p style="text-align:center;margin-top:1.25rem;font-size:0.875rem;color:var(--stone);">
+        Already have an account? <a href="/login">Sign in</a>
+      </p>
+    </div>
+  </div>
+</div>

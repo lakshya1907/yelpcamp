@@ -1,0 +1,12 @@
+<% if (success && success.length) { %>
+<div class="yc-alert yc-alert-success">
+  <span><%= success %></span>
+  <button class="yc-alert-close" onclick="this.parentElement.remove()">&times;</button>
+</div>
+<% } %>
+<% if (error && error.length) { %>
+<div class="yc-alert yc-alert-danger">
+  <span><%= error %></span>
+  <button class="yc-alert-close" onclick="this.parentElement.remove()">&times;</button>
+</div>
+<% } %>

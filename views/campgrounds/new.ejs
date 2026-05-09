@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="yc-form-wrap">
+  <div class="yc-page-header">
+    <h1>New Campground</h1>
+    <p>Share a spot you love with the community</p>
+  </div>
+
+  <div class="yc-form-card">
+    <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+      <div class="yc-form-group">
+        <label class="yc-label" for="title">Name</label>
+        <input class="yc-input" type="text" id="title" name="campground[title]" required placeholder="e.g. Pine Ridge Campsite">
+      </div>
+      <div class="yc-form-group">
+        <label class="yc-label" for="location">Location</label>
+        <input class="yc-input" type="text" id="location" name="campground[location]" required placeholder="City, State">
+      </div>
+      <div class="yc-form-group">
+        <label class="yc-label" for="price">Price per night</label>
+        <div class="yc-input-prefix">
+          <span class="yc-input-prefix-text">$</span>
+          <input class="yc-input" type="text" id="price" name="campground[price]" placeholder="0.00" required>
+        </div>
+      </div>
+      <div class="yc-form-group">
+        <label class="yc-label" for="description">Description</label>
+        <textarea class="yc-input" id="description" name="campground[description]" rows="4" required placeholder="Tell people what makes this place special..."></textarea>
+      </div>
+      <div class="yc-form-group">
+        <label class="yc-label">Photos</label>
+        <label class="yc-file-input-label" for="image">
+          <span>📷</span>
+          <span>Choose images to upload</span>
+        </label>
+        <input class="yc-file-input" type="file" id="image" name="image" multiple>
+      </div>
+      <div style="display:flex; gap:1rem; align-items:center; margin-top:0.5rem;">
+        <button class="btn-forest" type="submit">Add Campground</button>
+        <a href="/campgrounds" class="text-muted" style="font-size:0.875rem;">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.getElementById('image').addEventListener('change', function() {
+    const label = this.previousElementSibling;
+    const names = Array.from(this.files).map(f => f.name).join(', ');
+    label.querySelector('span:last-child').textContent = names || 'Choose images to upload';
+  });
+</script>

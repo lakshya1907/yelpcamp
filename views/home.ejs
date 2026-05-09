@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YelpCamp — Discover Wild Places</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/home.css">
+</head>
+<body>
+
+  <nav class="home-nav">
+    <span class="home-brand">Yelp<span>Camp</span></span>
+    <div class="home-nav-links">
+      <a href="/campgrounds">Explore</a>
+      <% if (!currentUser) { %>
+      <a href="/login">Login</a>
+      <a href="/register" class="home-nav-cta">Register</a>
+      <% } else { %>
+      <a href="/logout" class="home-nav-cta">Logout</a>
+      <% } %>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Discover &amp; Share</p>
+      <h1 class="hero-title">Your next campsite<br><em>is waiting</em></h1>
+      <p class="hero-sub">Explore thousands of campgrounds across the country, reviewed by fellow adventurers.</p>
+      <div class="hero-actions">
+        <a href="/campgrounds" class="hero-btn-primary">Explore Campgrounds</a>
+        <a href="/campgrounds/new" class="hero-btn-ghost">Share a spot</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <span class="feature-icon">🗺</span>
+      <h3>Interactive Maps</h3>
+      <p>See every campground pinned on a live map. Cluster views for easy browsing.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">⭐</span>
+      <h3>Honest Reviews</h3>
+      <p>Real ratings from real campers. Know what to expect before you pack up.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">📸</span>
+      <h3>Photo Galleries</h3>
+      <p>Browse photos from the community to find your perfect wilderness escape.</p>
+    </div>
+  </section>
+
+  <footer class="home-footer">
+    <span>&copy; YelpCamp 2024</span>
+  </footer>
+
+</body>
+</html>

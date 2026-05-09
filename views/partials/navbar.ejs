@@ -1,0 +1,13 @@
+<nav class="yc-nav">
+  <a class="yc-nav-brand" href="/">Yelp<span>Camp</span></a>
+  <ul class="yc-nav-links">
+    <li><a href="/campgrounds">Explore</a></li>
+    <li><a href="/campgrounds/new">+ New</a></li>
+    <% if (!currentUser) { %>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/register" class="nav-cta">Register</a></li>
+    <% } else { %>
+    <li><a href="/logout" class="nav-cta">Logout</a></li>
+    <% } %>
+  </ul>
+</nav>
