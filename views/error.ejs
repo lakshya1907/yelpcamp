@@ -1,11 +1,11 @@
-<% layout('layouts/boilerplate') %>
-
-<div class="yc-error-wrap">
-  <div class="yc-error-code">!</div>
-  <h2><%= err.message %></h2>
-  <p class="yc-error-msg">Something went wrong. Please try again.</p>
-  <% if (process.env.NODE_ENV !== 'production') { %>
-  <pre style="text-align:left;background:#f5f1ec;padding:1rem;border-radius:4px;font-size:0.8125rem;overflow:auto;max-width:700px;margin:1rem auto;"><%= err.stack %></pre>
-  <% } %>
-  <a href="/" class="btn-forest">Go Home</a>
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><%=err.message%></h4>
+            <% if (process.env.NODE_ENV !== "production") { %>
+            <p><%= err.stack %></p>
+            <% } %>
+        </div>
+    </div>
 </div>

@@ -1,25 +1,33 @@
-<% layout('layouts/boilerplate') %>
+<% layout('layouts/boilerplate')%>
 
-<div class="yc-auth-wrap">
-  <div class="yc-auth-card">
-    <img class="yc-auth-img" src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80" alt="campfire">
-    <div class="yc-auth-body">
-      <h2>Welcome back</h2>
-      <p class="subtitle">Sign in to your YelpCamp account</p>
-      <form action="/login" method="POST" class="validated-form" novalidate>
-        <div class="yc-form-group">
-          <label class="yc-label" for="username">Username</label>
-          <input class="yc-input" type="text" id="username" name="username" autofocus required>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <div class="card shadow">
+                <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+                    alt="" class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <form action="/login" method="POST" class="validated-form" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-block">Login</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="yc-form-group">
-          <label class="yc-label" for="password">Password</label>
-          <input class="yc-input" type="password" id="password" name="password" required>
-        </div>
-        <button class="btn-forest" type="submit" style="width:100%;justify-content:center;">Login</button>
-      </form>
-      <p style="text-align:center;margin-top:1.25rem;font-size:0.875rem;color:var(--stone);">
-        No account? <a href="/register">Register here</a>
-      </p>
     </div>
-  </div>
 </div>
