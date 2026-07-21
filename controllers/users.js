@@ -31,9 +31,12 @@ module.exports.login = (req, res) => {
     res.redirect(redirectUrl);
 }
 
-module.exports.logout = (req, res) => {
-    req.logout();
-    // req.session.destroy();
-    req.flash('success', "Goodbye!");
-    res.redirect('/campgrounds');
+module.exports.logout = (req, res, next) => {
+    // passport-local 0.7 made req.logout() require a callback; calling it
+    // without one throws synchronously instead of logging the user out.
+    req.logout(err => {
+        if (err) return next(err);
+        req.flash('success', "Goodbye!");
+        res.redirect('/campgrounds');
+    });
 }

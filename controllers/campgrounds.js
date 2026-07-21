@@ -81,6 +81,10 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.updateCampground = async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground }, { new: true });
+    if (!campground) {
+        req.flash('error', 'Cannot find that campground!');
+        return res.redirect('/campgrounds');
+    }
     const uploads = await Promise.all(req.files.map(f => uploadBufferToCloudinary(f.buffer)));
     const imgs = uploads.map(u => ({ url: u.secure_url, filename: u.public_id }));
     campground.images.push(...imgs);
@@ -157,7 +161,16 @@ module.exports.search = async (req, res) => {
 
 module.exports.deleteCampground = async (req, res) => {
     const { id } = req.params;
-    await Campground.findByIdAndDelete(id);
+    const campground = await Campground.findByIdAndDelete(id);
+    // Clean up the associated Cloudinary images so deleting a campground
+    // doesn't leave orphaned files (and cost) behind in Cloudinary storage.
+    if (campground && campground.images.length) {
+        await Promise.all(
+            campground.images.map(img => cloudinary.uploader.destroy(img.filename).catch(err => {
+                console.error(`Failed to delete Cloudinary image ${img.filename}:`, err.message);
+            }))
+        );
+    }
     req.flash('success', 'Successfully deleted campground')
     res.redirect('/campgrounds');
 }
